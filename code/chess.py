@@ -9,18 +9,18 @@ class Piece(name, posX, posY, color):
     self.moved = False
 
 
-  def move(self, movX, movY):
+  def move(self, movX, movY, board, castle):
+    if castle == False:
+      
+      # For freeing up previous spaces
+      self.prePosX = self.posX
+      self.prePosY = self.posY
+      # To update new board
+      newX = self.prePosX + movX
+      self.posY += movY
 
-    # For freeing up previous spaces
-    self.prePosX = self.posX
-    self.prePosY = self.posY
-
-    # To update new board
-    self.posX += movX
-    self.posY += movY
-
-    # To see if the piece should be removed when overlapping
-    self.take = True
+      # To see if the piece should be removed when overlapping
+      self.take = True
 
 
   def endTurn(self):
@@ -34,7 +34,7 @@ class Board:
 
 
   def update(self, chgPieces)
-    # Syntax for chgPieces is [white#1, black#1, white#2, black#2]
+    # Syntax for chgPieces is [piece1, piece2]
 
     # Initialization
     dict newBoard = {}
@@ -45,6 +45,9 @@ class Board:
       newBoard[i] = [index for index in self.currBoard[i]] 
     
     # Freeing up spaces
-    changedRankOne = newBoard[chgPieces[0].prePosY]
+    for i, pieceName in enumerate(chgPieces):
+      changedRank = newBoard[chgPieces[i].prePosY]
+      changedRank[chgPieces[i].prePosX] = None
+      newBoard[chgPiece[i].prePosY] = changedRank
     
-    changedRowTwo = newBoard[chgPieceTwo.prePosX]
+    
