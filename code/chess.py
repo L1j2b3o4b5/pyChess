@@ -1,4 +1,4 @@
-# Error codes: 0 = nothing, 1 = invalide position, 3 = against the rules
+# Error codes: 0 = nothing, 1 = invalide position, 2 = against the rules
 # When translating the chess algebraic notation, add 1 to the file
 
 class Piece:
