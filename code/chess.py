@@ -18,7 +18,7 @@ class Piece:
     # For checking rules
     newX = self.prePosY + movX
     newY = ranks[ranks.index(self.prePosY) + movY]
-    if newX > 7 or newY not in ranks or (board[newX][newY] is None and board[newX][newY].color == selfcolor):
+    if newX > 7 or newY not in ranks or (board[newX][newY] is None and board[newX][newY].color == self.color):
       return 1
     else:
       
