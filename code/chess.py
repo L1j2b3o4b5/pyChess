@@ -13,12 +13,12 @@ class Piece:
 
 
   def move(self, movX, movY, board, ):
-    ranks = ["a", "b", "c", "d", "e", "f", "g", "h"]
+    files = ["a", "b", "c", "d", "e", "f", "g", "h"]
 
     # For checking rules
-    newX = self.prePosX + movX
+    newX = self.prePosY + movX
     newY = ranks[ranks.index(self.prePosY) + movY]
-    if newX > 7 or newY not in ranks or (board[newY][newX] is None and board[newY][newX].color == selfcolor):
+    if newX > 7 or newY not in ranks or (board[newX][newY] is None and board[newX][newY].color == selfcolor):
       return 1
     else:
       
@@ -27,9 +27,9 @@ class Piece:
       self.prePosY = self.posY
       
       # To update new board
-      newX = self.prePosX + movX
-      self.posY += movY
-
+      self.posX = newX
+      self.posY = newY
+      
       # To see if the piece should be removed when overlapping
       self.take = True
 
