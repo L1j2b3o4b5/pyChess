@@ -13,7 +13,8 @@ class PieceTemplate(Piece):
   def move(self, movX, movY, knight, board):
     # if <enter condition here>:
     blocked = False
-    for i in range(9)
+    dictIndex1 = range(self.posY, self.posY + movY)
+    dictIndex2 = range(self.posX
     super.move(movX, movY, board)
 
   # Enter other special moves here
