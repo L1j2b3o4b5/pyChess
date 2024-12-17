@@ -1,3 +1,6 @@
+# Error codes: 0 = nothing, 1 = invalide position, 3 = against the rules
+# When translating the chess algebraic notation, add 1
+
 class Piece(name, posX, posY, color):
   def __init__(self, name, posX, posY, color):
     self.name = name
@@ -9,8 +12,15 @@ class Piece(name, posX, posY, color):
     self.moved = False
 
 
-  def move(self, movX, movY, board, castle):
-    if castle == False:
+  def move(self, movX, movY, board, ):
+    ranks = ["a", "b", "c", "d", "e", "f", "g", "h"]
+
+    # For checking rules
+    newX = self.prePosX + movX
+    newY = ranks[ranks.index(self.prePosY) + movY]
+    if newX > 7 or newY not in ranks or board[newY][newX] is not None:
+      return 1
+    else:
       
       # For freeing up previous spaces
       self.prePosX = self.posX
@@ -21,6 +31,8 @@ class Piece(name, posX, posY, color):
 
       # To see if the piece should be removed when overlapping
       self.take = True
+
+      return 0
 
 
   def endTurn(self):
@@ -37,7 +49,7 @@ class Board:
     # Syntax for chgPieces is [piece1, piece2]
 
     # Initialization
-    dict newBoard = {}
+    newBoard = {}
     ranks = ["a", "b", "c", "d", "e", "f", "g", "h"]
 
     # Initializing new board
