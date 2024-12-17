@@ -12,7 +12,8 @@ class PieceTemplate(Piece):
 
   def move(self, movX, movY, knight, board):
     # if <enter condition here>:
-    gen1 = [i for i in {range(self.prePosX
+    blocked = False
+    for i in range(9)
     super.move(movX, movY, board)
 
   # Enter other special moves here
