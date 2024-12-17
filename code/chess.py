@@ -1,7 +1,7 @@
 # Error codes: 0 = nothing, 1 = invalide position, 3 = against the rules
-# When translating the chess algebraic notation, add 1
+# When translating the chess algebraic notation, add 1 to the file
 
-class Piece(name, posX, posY, color):
+class Piece:
   def __init__(self, name, posX, posY, color):
     self.name = name
     self.posX = posX
@@ -18,13 +18,14 @@ class Piece(name, posX, posY, color):
     # For checking rules
     newX = self.prePosX + movX
     newY = ranks[ranks.index(self.prePosY) + movY]
-    if newX > 7 or newY not in ranks or board[newY][newX] is not None:
+    if newX > 7 or newY not in ranks or (board[newY][newX] is None and board[newY][newX].color == selfcolor):
       return 1
     else:
       
       # For freeing up previous spaces
       self.prePosX = self.posX
       self.prePosY = self.posY
+      
       # To update new board
       newX = self.prePosX + movX
       self.posY += movY
@@ -40,8 +41,8 @@ class Piece(name, posX, posY, color):
 
 
 class Board:
-  def __init__():
-    self.currBoard = {}
+  def __init__(self, board):
+    self.currBoard = board
   
 
 
@@ -58,8 +59,13 @@ class Board:
     
     # Freeing up spaces
     for i, pieceName in enumerate(chgPieces):
-      changedRank = newBoard[chgPieces[i].prePosY]
-      changedRank[chgPieces[i].prePosX] = None
-      newBoard[chgPiece[i].prePosY] = changedRank
+      newBoard[pieceName.prePosY][pieceName.prePosX] = None
+
+    # Taking pieces
+    for i, name in enumerate(chgPieces):
+      if not self.currBoard[chgPieces[i].posY][chgPieces[i].posX] is None:
+        newBoard[chgPieces[i].posY][chgPieces[i].posX] = chgPieces[i]
+
+
     
     
