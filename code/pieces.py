@@ -26,7 +26,10 @@ class King(PieceTemplate):
       return 2
 
   def castle(self, board):
-    if not self.moved and board:
+    if ((not self.moved) and board[0]['h'].name == "rook" and board[0]['h'].color == "white") or ((not self.moved) and board[7]['a'].name == "rook" and board[7]['a'].color == "black"):
+      self.prePosX = self.posX
+      self.prePosY = self.posY
+      
       
     
     
