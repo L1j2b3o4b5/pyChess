@@ -12,7 +12,7 @@ class Piece:
     self.moved = False
 
 
-  def move(self, movX, movY, board, ):
+  def move(self, movX, movY, board):
     files = ["a", "b", "c", "d", "e", "f", "g", "h"]
 
     # For checking rules
