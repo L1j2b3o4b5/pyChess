@@ -1,5 +1,5 @@
 # Error codes: 0 = nothing, 1 = invalid position, 2 = against the rules
-# When translating the chess algebraic notation, add 1 to the file
+# When translating the chess algebraic notation, add 1 to the rank
 
 class Piece:
   def __init__(self, name, posX, posY, color):
