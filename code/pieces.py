@@ -10,8 +10,9 @@ class PieceTemplate(Piece):
     elif color == "black":
       super.__init__(name, bkStartX, bkStartY, color)
 
-  def move(self, movX, movY, board):
+  def move(self, movX, movY, knight, board):
     # if <enter condition here>:
+    gen1 = [i for i in {range(self.prePosX
     super.move(movX, movY, board)
 
   # Enter other special moves here
